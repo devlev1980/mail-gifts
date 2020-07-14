@@ -1,0 +1,56 @@
+.birthday-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(500px,1fr));
+  padding: 10px 20px;
+  grid-gap: 2rem;
+  overflow: hidden;
+
+  @media (max-width: 425px) {
+    grid-template-columns: auto;
+  }
+
+  .card{
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 90%;
+
+    div{
+      //height: 100%;
+      //overflow: hidden;
+      //width: 100%;
+      //height: 100%;
+
+      img{
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    .overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: all .2s linear;
+      &:hover{
+        background: rgba(0,0,0,0.6);
+      }
+    }
+    span.card-label{
+      position: absolute;
+      opacity: 0;
+      left: 50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      transition: all .2s linear;
+    }
+
+  }
+  .card:hover span.card-label{
+    opacity: 1;
+    color: #ffffff;
+  }
+}

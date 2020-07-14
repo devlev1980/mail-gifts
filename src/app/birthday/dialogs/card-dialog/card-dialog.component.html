@@ -1,0 +1,33 @@
+<ng-container *ngIf="display$ | async as display ">
+  <section [ngClass]="{'open':display === 'open','close': display === 'close'}" (click)="closeDialog()">
+    <!--    <ng-container *ngIf="card$ | async as card">-->
+    <div class="card" (click)="$event.stopPropagation()" *ngIf="card$ | async as card">
+      <div class="card-header">
+        <button class="close" type="button" (click)="closeDialog()">X</button>
+        <h3>{{card?.label}}</h3>
+
+      </div>
+      <div class="card-body" (load)="loadCard()">
+        <div class="img__container" #imgContainerRef (click)="isFlipped = !isFlipped" [ngClass]="{'is-flipped': isFlipped}">
+          <div class="card__face card__face--front"><img src="assets/img/birthdays/{{card?.img_src}}" alt=""></div>
+          <div class="card__face card__face--back"></div>
+        </div>
+        <div class="card__input" [ngClass]="{'show': isFlipped}">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="28"></textarea>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary" (click)="onSave()">Save as image</button>
+        <button class="btn btn-danger" (click)="closeDialog()">CANCEL</button>
+      </div>
+
+    </div>
+
+    <!--    </ng-container>-->
+  </section>
+</ng-container>

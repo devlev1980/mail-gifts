@@ -1,0 +1,12 @@
+<!--<p>birthday works!</p>-->
+<div class="birthday-cards">
+  <div class="card" *ngFor="let card of birthdayCards" (click)="openDialog(card)">
+    <div>
+      <img src="../../assets/img/birthdays/{{card.img_src}}"  alt="">
+    </div>
+    <div class="overlay">
+      <span class="card-label">{{card.label}}</span>
+    </div>
+  </div>
+</div>
+<yl-card-dialog></yl-card-dialog>
